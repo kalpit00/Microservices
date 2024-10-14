@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -20,9 +21,9 @@ public class ProductService {
 
     public void createProduct(ProductRequest productRequest) {
         Product product = Product.builder()
-                .name(productRequest.name())
-                .description(productRequest.description())
-                .price(productRequest.price())
+                .name(productRequest.getName())
+                .description(productRequest.getDescription())
+                .price(productRequest.getPrice())
                 .build();
 
         productRepository.save(product);
@@ -31,8 +32,7 @@ public class ProductService {
 
     public List<ProductResponse> getAllProducts() {
         List<Product> products = productRepository.findAll();
-
-        return products.stream().map(this::mapToProductResponse).toList();
+        return products.stream().map(this::mapToProductResponse).collect(Collectors.toList());
     }
 
     private ProductResponse mapToProductResponse(Product product) {
