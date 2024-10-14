@@ -3,6 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+docker/mongodb/data/journal/WiredTigerLog.0000000002
+
 
 ### STS ###
 .apt_generated
@@ -31,6 +33,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### Docker
-docker
