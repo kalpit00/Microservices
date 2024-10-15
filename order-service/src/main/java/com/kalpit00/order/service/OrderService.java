@@ -19,18 +19,15 @@ import java.util.UUID;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-//    private final InventoryClient inventoryClient;
-    public void placeOrder(OrderRequest orderRequest) {
-//        boolean isProductInStock = inventoryClient.isInStock(orderRequest.getSkuCode(), orderRequest.getQuantity());
-//        if (isProductInStock) {
-//            var order = mapToOrder(orderRequest);
-//            orderRepository.save(order);
-//        }
-//        else {
-//            throw new RuntimeException("Product with code " + orderRequest.getSkuCode() + " is not in stock");
-//        }
-        var order = mapToOrder(orderRequest);
-        orderRepository.save(order);
+    private final InventoryClient inventoryClient;
+
+    public boolean placeOrder(OrderRequest orderRequest) {
+        boolean isProductInStock = inventoryClient.isInStock(orderRequest.getSkuCode(), orderRequest.getQuantity());
+        if (isProductInStock) {
+            var order = mapToOrder(orderRequest);
+            orderRepository.save(order);
+        }
+        return isProductInStock;
     }
 
     private static Order mapToOrder(OrderRequest orderRequest) {
