@@ -1,4 +1,4 @@
-package com.kalpit00.product.config;
+package com.kalpit00.inventory_service.config;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -11,14 +11,14 @@ import org.springframework.context.annotation.Configuration;
 public class OpenAPIConfig {
 
     @Bean
-    public OpenAPI productServiceAPI() {
+    public OpenAPI inventoryServiceAPI() {
         return new OpenAPI()
-                .info(new Info().title("Product Service API")
-                        .description("This is the REST API for Product Service")
+                .info(new Info().title("Inventory Service API")
+                        .description("This is the REST API for Inventory Service")
                         .version("v0.0.1")
                         .license(new License().name("Apache 2.0")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("You can refer to the Product Service Wiki Documentation")
-                        .url("https://product-service-dummy-url.com/docs"));
+                        .description("You can refer to the Inventory Service Wiki Documentation")
+                        .url("https://inventory-service-dummy-url.com/docs"));
     }
 }
